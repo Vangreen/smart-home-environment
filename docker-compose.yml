@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  angular-ui:
+    build:
+      context: ./smart_home_web-app
+      dockerfile: Dockerfile
+    restart: unless-stopped  
+    ports:
+      - "4200:80"
+    container_name: angular-ui
+    volumes:
+      - ./smart_home_web-app/dist:/dist
+
+  server:
+    build:
+      context: ./smart-home-server
+      dockerfile: Dockerfile
+      network: host
+      #    ports:
+      #  - "127.0.0.1:9999:9999"
+    container_name: smart-home-server
+    restart: unless-stopped
+    network_mode: "host"
+  
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+
