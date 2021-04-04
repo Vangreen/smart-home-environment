@@ -6,6 +6,7 @@ Docker-compose file and scripts for smart home project
 - npm
 - angular_cli
 - maven 
+- Docker and Docker compose
 
 ## How to run 
 Unpack under downloaded repositories: 
@@ -22,9 +23,9 @@ Unpack under downloaded repositories:
 ```
 
 and run:
-- On x86 
+- On x86 linux
 ```sh run.sh```
-- On arm 
+- On arm linux
 ```sh run.sh arm```
 
 ## Contributors 
