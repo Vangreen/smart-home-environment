@@ -3,6 +3,11 @@
 #angular project
 cd smart_home_web-app 
 git checkout develop
+if [ $1 == 'arm' ]
+then
+# prevent JavaScript heap out of memory error
+export NODE_OPTIONS="--max-old-space-size=8192"
+fi
 git pull
 npm install 
 ng build --output-path=dist
