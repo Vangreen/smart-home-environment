@@ -6,7 +6,7 @@ git checkout develop
 if [ $1 == 'arm' ]
 then
 # prevent JavaScript heap out of memory error
-export NODE_OPTIONS="--max-old-space-size=8192"
+export NODE_OPTIONS="--max-old-space-size=900"
 fi
 git pull
 npm install 
