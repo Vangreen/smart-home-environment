@@ -25,8 +25,6 @@ Unpack under downloaded repositories:
 and run:
 - On x86 linux
 ```sh run.sh```
-- On arm linux
-```sh run.sh arm```
 
 ## Contributors 
 [@Martilius](https://github.com/Martilius)
