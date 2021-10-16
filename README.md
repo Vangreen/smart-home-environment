@@ -23,7 +23,6 @@ Unpack under downloaded repositories:
 ```
 
 and run:
-- On x86 linux
 ```sh run.sh```
 
 ## Contributors 
