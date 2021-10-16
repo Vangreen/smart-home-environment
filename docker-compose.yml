@@ -22,19 +22,10 @@ services:
     restart: unless-stopped
     network_mode: "host"
   
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: password
+  mongo_db:
+    image: mongo
+    container_name: mongo_db
     restart: unless-stopped
     ports:
-      - 5432:5432
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
-    restart: unless-stopped
+      - 27017:27017 
 
