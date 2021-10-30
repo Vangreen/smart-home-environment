@@ -1,5 +1,16 @@
 version: '3.8'
 services:
+  #Database
+  mongo_db:
+    image: mongo
+    container_name: mongo_db
+    restart: unless-stopped
+    ports:
+      - 27017:27017 
+    networks:
+      - smart_home_network
+
+  #Frontend
   angular-ui:
     build:
       context: ./smart_home_web-app
@@ -10,22 +21,24 @@ services:
     container_name: angular-ui
     volumes:
       - ./smart_home_web-app/dist:/dist
-
+    networks:
+      - smart_home_network
+      
+  #Backend
   server:
     build:
       context: ./smart-home-server
       dockerfile: Dockerfile
-      network: host
-      #    ports:
-      #  - "127.0.0.1:9999:9999"
+    ports:
+      - "9999:9999"
     container_name: smart-home-server
     restart: unless-stopped
-    network_mode: "host"
-  
-  mongo_db:
-    image: mongo
-    container_name: mongo_db
-    restart: unless-stopped
-    ports:
-      - 27017:27017 
+    depends_on:
+      - mongo_db
+    networks:
+      - smart_home_network
+
+networks:
+  smart_home_network:
+    driver: bridge
 
