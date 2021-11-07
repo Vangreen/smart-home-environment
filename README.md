@@ -12,8 +12,8 @@ Docker-compose file and scripts for smart home project
 Unpack under downloaded repositories: 
 | Name | URL |
 | ------ | ------ |
-| smart-home-server - Backend | https://github.com/Martilius/smart-home-server |
-| smart_home_web-app  - UI| https://github.com/Vangreen/smart_home_web-app |
+| smart-home-server - Backend | https://github.com/Smart-Home-ESP/smart-home-server |
+| smart_home_web-app  - UI| https://github.com/Smart-Home-ESP/smart_home_web-app |
   ```
   .
   run.sh
@@ -23,10 +23,7 @@ Unpack under downloaded repositories:
 ```
 
 and run:
-- On x86 linux
 ```sh run.sh```
-- On arm linux
-```sh run.sh arm```
 
 ## Contributors 
 [@Martilius](https://github.com/Martilius)
