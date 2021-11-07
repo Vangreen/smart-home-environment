@@ -32,12 +32,8 @@ services:
     container_name: angular-ui
     volumes:
       - ./smart_home_web-app/dist:/dist
-    depends_on:
-      - "smart-home-server"
     networks:
       - smart_home_network
-    links:
-      - "smart-home-server"
 
 networks:
   smart_home_network:
