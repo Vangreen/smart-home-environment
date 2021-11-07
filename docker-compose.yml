@@ -1,6 +1,5 @@
 version: '3.8'
 services:
- #Database
   mongo_db:
     image: mongo
     container_name: mongo_db
@@ -9,26 +8,7 @@ services:
       - 27017:27017 
     networks:
       - smart_home_network
-
-#Frontend
-  angular-ui:
-    build:
-      context: ./smart_home_web-app
-      dockerfile: Dockerfile
-    restart: unless-stopped  
-    ports:
-      - "4200:80"
-    container_name: angular-ui
-    volumes:
-      - ./smart_home_web-app/dist:/dist
-    depends_on:
-      - smart-home-server
-    networks:
-      - smart_home_network
-    links:
-      - smart-home-server
-
-#Backend
+      
   server:
     build:
       context: ./smart-home-server
@@ -41,6 +21,23 @@ services:
       - mongo_db
     networks:
       - smart_home_network
+
+  angular-ui:
+    build:
+      context: ./smart_home_web-app
+      dockerfile: Dockerfile
+    restart: unless-stopped  
+    ports:
+      - "4200:80"
+    container_name: angular-ui
+    volumes:
+      - ./smart_home_web-app/dist:/dist
+    depends_on:
+      - "smart-home-server"
+    networks:
+      - smart_home_network
+    links:
+      - "smart-home-server"
 
 networks:
   smart_home_network:
